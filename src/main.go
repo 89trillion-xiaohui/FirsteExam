@@ -1,19 +1,17 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
+	"os"
+
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"gopkg.in/ini.v1"
-	"os"
+
 	"test2/src/controller"
 	"test2/src/model"
 	"test2/src/service"
 )
-
-//var jsonPath *string	//存储json路径
-
-//var Config map[string] model.Soldier // map存储配置文件
 
 func main() {
 	// 解析ini文件
@@ -28,13 +26,12 @@ func main() {
 	JsonInit()
 
 	r := gin.Default()
-	soldierController := controller.Controller{}
 
-	r.GET("/rarity", soldierController.GetRarity)
+	r.GET("/rarity", controller.GetRarity)
 
-	r.GET("/combatPoints", soldierController.GetCombatPoints)
+	r.GET("/combatPoints", controller.GetCombatPoints)
 
-	r.GET("/rarityAndUnlockArena", soldierController.GetRarityUnlockArena)
+	r.GET("/rarityAndUnlockArena", controller.GetRarityUnlockArena)
 
 	r.Run(":" + httpPort)
 }

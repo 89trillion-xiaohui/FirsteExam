@@ -23,7 +23,7 @@ func GetRarityUnlockArenaSoldier(rarity int, unlockarena int) map[string]model2.
 		if err != nil {
 			fmt.Println("Get Error")
 		}
-		if s.Rarity == rarity && s.UnlockArena >= unlockarena {
+		if s.Rarity == rarity && s.UnlockArena <= unlockarena {
 			soldier[strconv.Itoa(idn)] = s
 		}
 	}
